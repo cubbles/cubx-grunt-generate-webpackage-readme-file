@@ -1,0 +1,27 @@
+{
+  "name": "cubx-grunt-generate-webpackage-readme-file",
+  "version": "1.0.0",
+  "description": "Grunt task to generate a Cubbles webpackage README file",
+  "main": "cubx-generate-webpackage-readme-file.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubbles/cubx-grunt-generate-webpackage-readme-file.git"
+  },
+  "keywords": [
+    "cubbles",
+    "grunt",
+    "task",
+    "readme",
+    "generate",
+    "webpackage"
+  ],
+  "author": "Edwin Gamboa <edwingamboa355@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cubbles/cubx-grunt-generate-webpackage-readme-file/issues"
+  },
+  "homepage": "https://github.com/cubbles/cubx-grunt-generate-webpackage-readme-file#readme"
+}
