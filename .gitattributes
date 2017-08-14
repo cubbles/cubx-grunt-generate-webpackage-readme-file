@@ -1,2 +1,2 @@
 # Enforce Unix newlines
-*.md    text eol=lf
+*.md    text eol=crlf
