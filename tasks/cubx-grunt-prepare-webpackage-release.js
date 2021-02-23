@@ -1,19 +1,19 @@
 'use strict';
-var inquirer = require('inquirer');
-var path = require('path');
-var WebpackageReadmeGenerator = require('cubx-generate-webpackage-readme-file');
+const inquirer = require('inquirer');
+const path = require('path');
+const WebpackageReadmeGenerator = require('cubx-generate-webpackage-readme-file');
 
 module.exports = function (grunt) {
   grunt.registerTask('+webpackage-generateReadmeFile', 'Generate the README file of a webpackage', function () {
-    var components = [];
-    var slots = {};
+    const components = [];
+    const slots = {};
     function addFeedComponentAndSlots (component) {
       slots[component.artifactId] = component.slots.map(function (slot) {
         return slot.slotId;
       });
       components.push(component.artifactId);
     }
-    var webpackagePath = grunt.config.get('param.src');
+    let webpackagePath = grunt.config.get('param.src');
 
     if (!webpackagePath) {
       webpackagePath = grunt.config.get('webpackagepath');
@@ -21,13 +21,13 @@ module.exports = function (grunt) {
     if (!webpackagePath) {
       throw new Error('webpackagePath missed. Please define the option webpackagePath.');
     }
-    var wpReadmeGenerator = new WebpackageReadmeGenerator(webpackagePath);
-    var manifest = grunt.file.readJSON(path.join(webpackagePath, 'manifest.webpackage'));
+    const wpReadmeGenerator = new WebpackageReadmeGenerator(webpackagePath);
+    const manifest = grunt.file.readJSON(path.join(webpackagePath, 'manifest.webpackage'));
     if (manifest.artifacts && manifest.artifacts.elementaryComponents) {
       manifest.artifacts.elementaryComponents.map(addFeedComponentAndSlots);
       manifest.artifacts.compoundComponents.map(addFeedComponentAndSlots);
     }
-    var questions = [
+    const questions = [
       {
         name: 'wpDescription',
         type: 'input',
@@ -85,7 +85,7 @@ module.exports = function (grunt) {
       }
     ];
 
-    var done = this.async();
+    const done = this.async();
     inquirer.prompt(questions).then(function (answers) {
       wpReadmeGenerator.setTemplateValues(answers);
       wpReadmeGenerator.generateReadmeFile();

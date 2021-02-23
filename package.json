@@ -4,7 +4,7 @@
   "description": "Grunt task to generate a Cubbles webpackage README file",
   "scripts": {
     "prepublishOnly": "npm run lint",
-    "lint": "eslint lib task test/unit *.js",
+    "lint": "eslint tasks test/unit *.js",
     "test": "mocha"
   },
   "repository": {

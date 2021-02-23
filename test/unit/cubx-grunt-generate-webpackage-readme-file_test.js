@@ -4,24 +4,24 @@
 /* globals describe,beforeEach,it,afterEach, before, expect */
 (function () {
   'use strict';
-  var grunt;
-  var fs;
-  var path;
-  var stdin;
-  var testRootPath;
-  var readmeNoSampleNoInit;
-  var readmeSampleNoInit;
-  var readmeSampleInit;
-  var resultReadmePath;
-  var readmeSampleNoSlots;
-  var wpPath;
-  var storeName;
-  var wpDescription;
-  var include;
-  var notInclude;
-  var firstOption;
-  var secondOption;
-  var sampleSlotValue;
+  let grunt;
+  let fs;
+  let path;
+  let stdin;
+  let testRootPath;
+  let readmeNoSampleNoInit;
+  let readmeSampleNoInit;
+  let readmeSampleInit;
+  let resultReadmePath;
+  let readmeSampleNoSlots;
+  let wpPath;
+  let storeName;
+  let wpDescription;
+  let include;
+  let notInclude;
+  let firstOption;
+  let secondOption;
+  let sampleSlotValue;
 
   describe('+webpackage-generateReadmeFile', function () {
     before(function () {
@@ -35,7 +35,7 @@
     });
     beforeEach(function () {
       stdin = require('mock-stdin').stdin();
-      var webpackageName = 'sample-wp';
+      const webpackageName = 'sample-wp';
       path = require('path');
       fs = require('fs-extra');
       testRootPath = path.join(process.cwd(), 'test');
@@ -44,7 +44,7 @@
       grunt = require('grunt');
       grunt.task.init = function () {};
 
-      var taskPath = path.resolve(process.cwd(), 'tasks');
+      const taskPath = path.resolve(process.cwd(), 'tasks');
       grunt.task.loadTasks(taskPath);
     });
     describe('run grunt task "+webpackage-generateReadmeFile", webpackage path configured in param.src', function () {
@@ -68,7 +68,7 @@
         process.nextTick(function () { stdin.send(wpDescription + '\n'); });
         setTimeout(function () { stdin.send(storeName + '\n'); }, 600);
         setTimeout(function () { stdin.send(notInclude + '\n'); }, 700);
-        grunt.tasks([ '+webpackage-generateReadmeFile' ], {}, function () {
+        grunt.tasks(['+webpackage-generateReadmeFile'], {}, function () {
           expect(fs.readFileSync(resultReadmePath, 'utf8')).to.equal(readmeNoSampleNoInit);
           done();
         });
@@ -79,7 +79,7 @@
         setTimeout(function () { stdin.send(include + '\n'); }, 700);
         setTimeout(function () { stdin.send(firstOption + '\n'); }, 800);
         setTimeout(function () { stdin.send(notInclude + '\n'); }, 900);
-        grunt.tasks([ '+webpackage-generateReadmeFile' ], {}, function () {
+        grunt.tasks(['+webpackage-generateReadmeFile'], {}, function () {
           expect(fs.readFileSync(resultReadmePath, 'utf8')).to.equal(readmeSampleNoInit);
           done();
         });
@@ -92,7 +92,7 @@
         setTimeout(function () { stdin.send(include + '\n'); }, 900);
         setTimeout(function () { stdin.send(firstOption + '\n'); }, 1000);
         setTimeout(function () { stdin.send(sampleSlotValue + '\n'); }, 1100);
-        grunt.tasks([ '+webpackage-generateReadmeFile' ], {}, function () {
+        grunt.tasks(['+webpackage-generateReadmeFile'], {}, function () {
           expect(fs.readFileSync(resultReadmePath, 'utf8')).to.equal(readmeSampleInit);
           done();
         });
@@ -102,7 +102,7 @@
         setTimeout(function () { stdin.send(storeName + '\n'); }, 600);
         setTimeout(function () { stdin.send(include + '\n'); }, 700);
         setTimeout(function () { stdin.send(secondOption + '\n'); }, 900);
-        grunt.tasks([ '+webpackage-generateReadmeFile' ], {}, function () {
+        grunt.tasks(['+webpackage-generateReadmeFile'], {}, function () {
           expect(fs.readFileSync(resultReadmePath, 'utf8')).to.equal(readmeSampleNoSlots);
           done();
         });
@@ -124,7 +124,7 @@
         process.nextTick(function () { stdin.send(wpDescription + '\n'); });
         setTimeout(function () { stdin.send(storeName + '\n'); }, 600);
         setTimeout(function () { stdin.send(notInclude + '\n'); }, 700);
-        grunt.tasks([ '+webpackage-generateReadmeFile' ], {}, function () {
+        grunt.tasks(['+webpackage-generateReadmeFile'], {}, function () {
           expect(fs.readFileSync(resultReadmePath, 'utf8')).to.equal(readmeNoSampleNoInit);
           done();
         });
